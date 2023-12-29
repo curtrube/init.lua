@@ -14,4 +14,3 @@ vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the s
 vim.opt.ignorecase = true                       -- ignore case in search patterns
 vim.opt.termguicolors = true
 
-vim.g.mapleader = " "

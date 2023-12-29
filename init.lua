@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("options")
+require("remap")
 require("lazy").setup("plugins")
 
 vim.cmd([[colorscheme catppuccin]]) -- for some reason this isn't working in plugins/catppuccin.lua
