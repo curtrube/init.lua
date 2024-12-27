@@ -16,6 +16,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
+          'saghen/blink.cmp',
           {
             "folke/lazydev.nvim",
             ft = "lua", -- only load on lua files
@@ -29,11 +30,12 @@ return {
           },
         },
         config = function()
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
+            lspconfig.lua_ls.setup({ capabilities = capabilities })
             lspconfig.pylsp.setup({})
             lspconfig.ruff_lsp.setup({})
-            lspconfig.tsserver.setup({})
+            lspconfig.tsserver.setup({ capabilities = capabilities })
             lspconfig.terraformls.setup({})
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
