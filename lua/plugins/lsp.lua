@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "pylsp", "ruff_lsp", "tsserver", "terraformls" },
+                ensure_installed = { "lua_ls", "pylsp", "ruff_lsp", "tsserver", "terraformls", "gopls"},
             })
         end,
     },
@@ -37,6 +37,7 @@ return {
             lspconfig.ruff_lsp.setup({})
             lspconfig.tsserver.setup({ capabilities = capabilities })
             lspconfig.terraformls.setup({})
+            lspconfig.gopls.setup({})
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
