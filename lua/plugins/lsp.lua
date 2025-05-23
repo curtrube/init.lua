@@ -62,7 +62,7 @@ return {
 			toggle_key = "<C-s>", -- toggle floating window
 		},
 		config = function(_, opts)
-			require("lsp_signature").etup(opts)
+			require("lsp_signature").setup(opts)
 		end,
 	},
 }
