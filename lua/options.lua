@@ -3,16 +3,16 @@
 vim.opt.modified = true
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 
-vim.opt.expandtab = true       -- convert tabs to spaces
-vim.opt.shiftwidth = 4         -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4            -- insert 4 spaces for a tab
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.shiftwidth = 4 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 4 -- insert 4 spaces for a tab
 vim.opt.softtabstop = 4
 
-vim.opt.number = true             -- set numbered lines
-vim.opt.relativenumber = true     -- set relative numbered lines
-vim.opt.cursorline = true         -- highlight the current line
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = true -- set relative numbered lines
+vim.opt.cursorline = true -- highlight the current line
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.ignorecase = true         -- ignore case in search patterns
+vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.termguicolors = true
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
@@ -32,7 +32,13 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    vim.lsp.buf.format({ async = false })
-  end,
+	callback = function()
+		vim.lsp.buf.format({ async = false })
+	end,
+})
+
+-- trigger LSP help
+vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {
+	noremap = true,
+	silent = true,
 })
