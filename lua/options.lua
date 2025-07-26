@@ -42,3 +42,21 @@ vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", {
 	noremap = true,
 	silent = true,
 })
+
+-- Set textwidth = 80 for Markdown
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.textwidth = 80
+	end,
+})
+
+-- Set textwidth = 120 for various code filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "python", "javascript", "typescript", "go", "java", "c", "cpp" },
+	callback = function()
+		vim.opt_local.textwidth = 120
+	end,
+})
+
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics in float" })
