@@ -32,6 +32,9 @@ return {
             end,
             formatters_by_ft = {
                 html = { "prettier" },
+                css = { "prettier" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
                 lua = { "stylua" },
                 markdown = { "prettier" },
                 -- Conform can also run multiple formatters sequentially
