@@ -127,3 +127,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.hl.on_yank()
     end,
 })
+
+-- Wrap lines at column 80 for Markdown files
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Wrap lines at column 80 for Markdown files",
+    group = vim.api.nvim_create_augroup("markdown-wrap", { clear = true }),
+    pattern = { "markdown" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.textwidth = 80
+        vim.opt_local.colorcolumn = "80"
+    end,
+})
