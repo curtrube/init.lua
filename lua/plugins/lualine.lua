@@ -3,8 +3,10 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
+				-- Set the lualine theme to 'catppuccin'
+				theme = catppuccin,
+				globalstatus = true,
 				icons_enabled = true,
-				--theme = "dracula",
 			},
 		})
 	end,

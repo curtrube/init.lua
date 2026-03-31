@@ -68,12 +68,57 @@ return {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "mono",
+				use_nvim_cmp_as_default = false,
 			},
 
 			completion = {
 				-- By default, you may press `<c-space>` to show the documentation.
 				-- Optionally, set `auto_show = true` to show the documentation after a delay.
-				documentation = { auto_show = false, auto_show_delay_ms = 500 },
+				documentation = {
+					auto_show = true,
+					window = {
+						border = "rounded",
+					},
+				},
+				--                ghost_text = {
+				--                    enabled = true,
+				--                },
+				list = {
+					selection = {
+						preselect = true,
+					},
+				},
+				accept = {
+					auto_brackets = {
+						enabled = true,
+					},
+				},
+				menu = {
+					border = "rounded",
+					max_height = 10,
+					draw = {
+						columns = {
+							{ "kind_icon" },
+							{ "label", "label_description", gap = 1 },
+							{ "kind" },
+						},
+						components = {
+							source_name = {
+								text = function(ctx)
+									local source_names = {
+										lsp = "[LSP]",
+										buffer = "[Buffer]",
+										path = "[Path]",
+										snippets = "[Snippets]",
+									}
+									return (source_names[ctx.source_name] or "[") .. ctx.source_name .. "]"
+								end,
+								highlight = "CmpItemMenu",
+							},
+						},
+					},
+					auto_show = true,
+				},
 			},
 
 			sources = {
@@ -95,7 +140,13 @@ return {
 			fuzzy = { implementation = "lua" },
 
 			-- Shows a signature help window while you type arguments for a function
-			signature = { enabled = true },
+			signature = {
+				enabled = true,
+				window = {
+					border = "rounded",
+					show_documentation = true,
+				},
+			},
 		},
 	},
 }
